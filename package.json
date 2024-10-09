@@ -42,5 +42,8 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://epiverse-connect.github.io/epiverse-search-frontend"
+  "homepage": "https://epiverse-connect.github.io/epiverse-search-frontend",
+  "devDependencies": {
+    "tailwindcss": "^3.4.13"
+  }
 }
