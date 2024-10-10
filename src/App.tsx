@@ -8,9 +8,9 @@ function App() {
     <div className="md:flex flex-col">
       <header className="grow-0 items-center text-center my-16">
         <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-          Find the epidemiological tool for{' '}
+          Find the right tool for{' '}
           <span className="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
-            your problem.
+            your epidemiology task.
           </span>
         </h1>
         <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
