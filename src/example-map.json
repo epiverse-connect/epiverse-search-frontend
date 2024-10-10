@@ -1,0 +1,41 @@
+{
+  "results": 4,
+  "data": [
+    {
+      "package": "epidemics",
+      "logo": "https://epiverse-trace.github.io/epidemics/logo.svg",
+      "website": "https://epiverse-trace.github.io/epidemics",
+      "source": "https://github.com/epiverse-trace/epidemics",
+      "vignettes": [],
+      "coord1": 0.384,
+      "coord2": 0.684
+    },
+    {
+      "package": "finalsize",
+      "logo": "https://epiverse-trace.github.io/finalsize/logo.svg",
+      "website": "https://epiverse-trace.github.io/finalsize",
+      "source": "https://github.com/epiverse-trace/finalsize",
+      "vignettes": [],
+      "coord1": -0.384,
+      "coord2": -0.684
+    },
+    {
+      "package": "cfr",
+      "logo": "https://epiverse-trace.github.io/cfr/logo.svg",
+      "website": "https://epiverse-trace.github.io/cfr",
+      "source": "https://github.com/epiverse-trace/cfr",
+      "vignettes": [],
+      "coord1": -0.384,
+      "coord2": 0.684
+    },
+    {
+      "package": "epiparameter",
+      "logo": "https://epiverse-trace.github.io/epiparameter/logo.svg",
+      "website": "https://epiverse-trace.github.io/epiparameter",
+      "source": "https://github.com/epiverse-trace/epiparameter",
+      "vignettes": [],
+      "coord1": 0.384,
+      "coord2": -0.684
+    }
+  ]
+}

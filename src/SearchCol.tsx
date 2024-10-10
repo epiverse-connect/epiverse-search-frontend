@@ -1,5 +1,5 @@
-import exampleSearch from './example-search.json';
-import React from 'react';
+import { SearchContext } from './SearchContext';
+import React, { useContext } from 'react';
 
 const SearchCol = () => {
   return (
@@ -76,6 +76,8 @@ interface showSearchResultsProps {
 }
 
 const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
+  const exampleSearch = useContext(SearchContext);
+
   if (show) {
     return (
       <div className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
