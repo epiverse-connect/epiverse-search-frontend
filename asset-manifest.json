@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/epiverse-search-frontend/static/css/main.3b38461f.css",
-    "main.js": "/epiverse-search-frontend/static/js/main.bd9c7ad6.js",
+    "main.css": "/epiverse-search-frontend/static/css/main.ac35e7ba.css",
+    "main.js": "/epiverse-search-frontend/static/js/main.c9876496.js",
     "static/js/453.efb95269.chunk.js": "/epiverse-search-frontend/static/js/453.efb95269.chunk.js",
     "index.html": "/epiverse-search-frontend/index.html",
-    "main.3b38461f.css.map": "/epiverse-search-frontend/static/css/main.3b38461f.css.map",
-    "main.bd9c7ad6.js.map": "/epiverse-search-frontend/static/js/main.bd9c7ad6.js.map",
+    "main.ac35e7ba.css.map": "/epiverse-search-frontend/static/css/main.ac35e7ba.css.map",
+    "main.c9876496.js.map": "/epiverse-search-frontend/static/js/main.c9876496.js.map",
     "453.efb95269.chunk.js.map": "/epiverse-search-frontend/static/js/453.efb95269.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.3b38461f.css",
-    "static/js/main.bd9c7ad6.js"
+    "static/css/main.ac35e7ba.css",
+    "static/js/main.c9876496.js"
   ]
 }
