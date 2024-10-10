@@ -1,4 +1,4 @@
-import { title } from 'process';
+import exampleSearch from './example-search.json';
 import React from 'react';
 
 const SearchCol = () => {
@@ -12,7 +12,7 @@ const SearchCol = () => {
 export default SearchCol;
 
 const SearchBar = () => {
-  const [searchResults, setSearchResults] = React.useState(false);
+  const [showSearchResults, setShowSearchResults] = React.useState(false);
   return (
     <div>
       <form className="max-w-md mx-auto">
@@ -53,40 +53,56 @@ const SearchBar = () => {
           <button
             onClick={(e) => {
               e.preventDefault();
-              setSearchResults(true);
+              setShowSearchResults(true);
             }}
             onBlur={(e) => {
               e.preventDefault();
-              setSearchResults(false);
+              setShowSearchResults(false);
             }}
             className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Search
           </button>
         </div>
-        <SearchResults show={searchResults} />
+        <SearchResults show={showSearchResults} />
       </form>
     </div>
   );
 };
 
 // eslint-disable-next-line react/prop-types
-interface SearchResultsProps {
+interface showSearchResultsProps {
   show: boolean;
 }
 
-const SearchResults: React.FC<SearchResultsProps> = ({ show }) => {
+const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
   if (show) {
     return (
-      <div className="bg-red-300">
-        <SearchResult title="epiverse" />
+      <div className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
+        <ul
+          className="py-2 text-sm text-gray-700 dark:text-gray-200"
+          aria-labelledby="dropdown-button"
+        >
+          {exampleSearch.response.results.map((result) => (
+            <SearchResult key={result.package} title={result.package} />
+          ))}
+        </ul>
       </div>
     );
   } else {
-    return <div></div>;
+    return <></>;
   }
 };
 
 const SearchResult = ({ title }: { title: string }) => {
-  return <div>{title}</div>;
+  return (
+    <li>
+      <button
+        type="button"
+        className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+      >
+        {title}
+      </button>
+    </li>
+  );
 };

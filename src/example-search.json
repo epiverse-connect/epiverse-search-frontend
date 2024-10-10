@@ -1,0 +1,43 @@
+{
+  "query": "how to estimate outbreak probability of dengue in colombia in next three months",
+  "filter": "epiverse",
+  "response": {
+    "results": [
+      {
+        "package": "epidemics",
+        "logo": "https://epiverse-trace.github.io/epidemics/logo.svg",
+        "website": "https://epiverse-trace.github.io/epidemics",
+        "source": "https://github.com/epiverse-trace/epidemics",
+        "vignettes": [
+          "https://epiverse-trace.github.io/epidemics/articles/modelling_interventions.html",
+          "https://epiverse-trace.github.io/epidemics/articles/modelling_multiple_interventions.html"
+        ],
+        "relevance": 0.987
+      },
+      {
+        "package": "finalsize",
+        "logo": "https://epiverse-trace.github.io/finalsize/logo.svg",
+        "website": "https://epiverse-trace.github.io/finalsize",
+        "source": "https://github.com/epiverse-trace/finalsize",
+        "vignettes": [],
+        "relevance": 0.643
+      },
+      {
+        "package": "cfr",
+        "logo": "https://epiverse-trace.github.io/cfr/logo.svg",
+        "website": "https://epiverse-trace.github.io/cfr",
+        "source": "https://github.com/epiverse-trace/cfr",
+        "vignettes": [],
+        "relevance": 0.987
+      },
+      {
+        "package": "epiparameter",
+        "logo": "https://epiverse-trace.github.io/epiparameter/logo.svg",
+        "website": "https://epiverse-trace.github.io/epiparameter",
+        "source": "https://github.com/epiverse-trace/epiparameter",
+        "vignettes": [],
+        "relevance": 0.643
+      }
+    ]
+  }
+}
