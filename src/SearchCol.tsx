@@ -1,5 +1,7 @@
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { SearchContext } from './SearchContext';
 import React, { useContext } from 'react';
+import { exampleSearch } from './atoms';
 
 const SearchCol = () => {
   return (
@@ -13,6 +15,8 @@ export default SearchCol;
 
 const SearchBar = () => {
   const [showSearchResults, setShowSearchResults] = React.useState(false);
+  const setSearchResults = useSetRecoilState(exampleSearch);
+
   return (
     <div>
       <form className="max-w-md mx-auto">
@@ -53,11 +57,71 @@ const SearchBar = () => {
           <button
             onClick={(e) => {
               e.preventDefault();
+              setSearchResults({
+                query:
+                  'how to estimate outbreak probability of dengue in colombia in next three months',
+                filter: 'epiverse',
+                response: {
+                  results: [
+                    {
+                      package: 'epidemics',
+                      logo: 'https://epiverse-trace.github.io/epidemics/logo.svg',
+                      website: 'https://epiverse-trace.github.io/epidemics',
+                      source: 'https://github.com/epiverse-trace/epidemics',
+                      vignettes: [
+                        'https://epiverse-trace.github.io/epidemics/articles/modelling_interventions.html',
+                        'https://epiverse-trace.github.io/epidemics/articles/modelling_multiple_interventions.html',
+                      ],
+                      relevance: 0.987,
+                    },
+                    {
+                      package: 'finalsize',
+                      logo: 'https://epiverse-trace.github.io/finalsize/logo.svg',
+                      website: 'https://epiverse-trace.github.io/finalsize',
+                      source: 'https://github.com/epiverse-trace/finalsize',
+                      vignettes: [],
+                      relevance: 0.643,
+                    },
+                    {
+                      package: 'cfr',
+                      logo: 'https://epiverse-trace.github.io/cfr/logo.svg',
+                      website: 'https://epiverse-trace.github.io/cfr',
+                      source: 'https://github.com/epiverse-trace/cfr',
+                      vignettes: [],
+                      relevance: 0.987,
+                    },
+                    {
+                      package: 'epiparameter',
+                      logo: 'https://epiverse-trace.github.io/epiparameter/logo.svg',
+                      website: 'https://epiverse-trace.github.io/epiparameter',
+                      source: 'https://github.com/epiverse-trace/epiparameter',
+                      vignettes: [],
+                      relevance: 0.643,
+                    },
+                  ],
+                },
+              });
               setShowSearchResults(true);
             }}
             onBlur={(e) => {
               e.preventDefault();
               setShowSearchResults(false);
+              setSearchResults({
+                query: '',
+                filter: '',
+                response: {
+                  results: [
+                    {
+                      package: 'example',
+                      logo: '',
+                      website: '',
+                      source: '',
+                      vignettes: ['example'],
+                      relevance: 0,
+                    },
+                  ],
+                },
+              });
             }}
             className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
@@ -76,7 +140,7 @@ interface showSearchResultsProps {
 }
 
 const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
-  const exampleSearch = useContext(SearchContext);
+  const exampleSearchResults = useRecoilValue(exampleSearch);
 
   if (show) {
     return (
@@ -85,7 +149,7 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdown-button"
         >
-          {exampleSearch.response.results.map((result) => (
+          {exampleSearchResults.response.results.map((result) => (
             <SearchResult key={result.package} title={result.package} />
           ))}
         </ul>

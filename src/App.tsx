@@ -1,3 +1,10 @@
+import {
+  RecoilRoot,
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+} from 'recoil';
 import Grid from './Grid';
 import MapCol from './MapCol';
 import SearchCol from './SearchCol';
@@ -5,22 +12,24 @@ import React from 'react';
 
 function App() {
   return (
-    <div className="md:flex flex-col">
-      <header className="grow-0 items-center text-center my-16">
-        <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-          Find the right tool for{' '}
-          <span className="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
-            your epidemiology task.
-          </span>
-        </h1>
-        <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-          There are a lot of tools out there. We created a custom, efficient,
-          and small AI to help you find the right one.
-        </p>
-      </header>
-      <Grid first={<SearchCol />} second={<MapCol />} />
-      <LogoCloud />
-    </div>
+    <RecoilRoot>
+      <div className="md:flex flex-col">
+        <header className="grow-0 items-center text-center my-16">
+          <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
+            Find the right tool for{' '}
+            <span className="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
+              your epidemiology task.
+            </span>
+          </h1>
+          <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
+            There are a lot of tools out there. We created a custom, efficient,
+            and small AI to help you find the right one.
+          </p>
+        </header>
+        <Grid first={<SearchCol />} second={<MapCol />} />
+        <LogoCloud />
+      </div>
+    </RecoilRoot>
   );
 }
 

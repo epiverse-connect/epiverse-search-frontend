@@ -1,6 +1,8 @@
 import React, { useContext, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
 import { MapContext } from './MapContext';
+import { useRecoilValue } from 'recoil';
+import { exampleSearch } from './atoms';
 
 interface DataPoint {
   x: number;
@@ -12,7 +14,10 @@ interface ScatterPlotProps {
 }
 
 const ScatterPlot: React.FC<ScatterPlotProps> = () => {
+  const exampleSearchResults = useRecoilValue(exampleSearch);
   const exampleMap = useContext(MapContext);
+
+  console.log(exampleSearchResults);
   console.log(exampleMap);
 
   const svgRef = useRef<SVGSVGElement | null>(null);
@@ -42,6 +47,11 @@ const ScatterPlot: React.FC<ScatterPlotProps> = () => {
 
     const chartGroup = svg.append('g').attr('transform', 'translate(250, 250)');
 
+    // Extract package names from exampleSearchResults.response.results
+    const packageNames = exampleSearchResults.response.results.map(
+      (result: any) => result.package
+    );
+
     chartGroup
       .selectAll('.dot')
       .data(exampleMap.data)
@@ -53,7 +63,7 @@ const ScatterPlot: React.FC<ScatterPlotProps> = () => {
       .attr('cx', (d) => xScale(d.coord1) - 250)
       .attr('cy', (d) => yScale(d.coord2) - 250)
       .attr('r', 5)
-      .attr('fill', 'blue')
+      .attr('fill', (d) => (packageNames.includes(d.package) ? 'red' : 'blue'))
       .on('mouseover', (event, d) => {
         tooltip
           .style('opacity', 1)
@@ -78,7 +88,7 @@ const ScatterPlot: React.FC<ScatterPlotProps> = () => {
       .call(d3.axisLeft(yScale))
       .selectAll('text')
       .remove();
-  }, []);
+  });
 
   return <svg ref={svgRef}></svg>;
 };
