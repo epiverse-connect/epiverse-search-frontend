@@ -9,6 +9,7 @@ import Grid from './Grid';
 import MapCol from './MapCol';
 import SearchCol from './SearchCol';
 import React from 'react';
+import LogoDataDotOrg from '../public/LogoDataDotOrg.png';
 
 function App() {
   return (
@@ -39,41 +40,21 @@ const LogoCloud = () => {
   return (
     <div className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
-        <div className="mx-auto grid max-w-lg grid-cols-4 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:grid-cols-6 sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none lg:grid-cols-5">
+        <div className="mx-auto grid max-w-lg grid-cols-2 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none">
           <img
             alt="Transistor"
-            src="https://tailwindui.com/plus/img/logos/158x48/transistor-logo-gray-900.svg"
+            // src="https://tailwindui.com/plus/img/logos/158x48/transistor-logo-gray-900.svg"
+            src="https://github.com/epiverse-trace/epiverse-trace.github.io/blob/main/public/LogoDataDotOrg.png?raw=true"
             width={158}
             height={48}
             className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
           />
           <img
             alt="Reform"
-            src="https://tailwindui.com/plus/img/logos/158x48/reform-logo-gray-900.svg"
+            src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/26/World_Health_Organization_Logo.svg/1024px-World_Health_Organization_Logo.svg.png"
             width={158}
             height={48}
             className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-          />
-          <img
-            alt="Tuple"
-            src="https://tailwindui.com/plus/img/logos/158x48/tuple-logo-gray-900.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
-          />
-          <img
-            alt="SavvyCal"
-            src="https://tailwindui.com/plus/img/logos/158x48/savvycal-logo-gray-900.svg"
-            width={158}
-            height={48}
-            className="col-span-2 max-h-12 w-full object-contain sm:col-start-2 lg:col-span-1"
-          />
-          <img
-            alt="Statamic"
-            src="https://tailwindui.com/plus/img/logos/158x48/statamic-logo-gray-900.svg"
-            width={158}
-            height={48}
-            className="col-span-2 col-start-2 max-h-12 w-full object-contain sm:col-start-auto lg:col-span-1"
           />
         </div>
       </div>
