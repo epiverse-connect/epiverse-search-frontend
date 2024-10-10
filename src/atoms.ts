@@ -1,6 +1,7 @@
 import { atom } from 'recoil';
+import exampleMapJson from './example-map.json';
 
-interface SearchQuery {
+export interface SearchQuery {
   query: string;
   filter: string;
   response: {
@@ -8,7 +9,7 @@ interface SearchQuery {
   };
 }
 
-interface SearchResult {
+export interface SearchResult {
   package: string;
   logo: string;
   website: string;
@@ -35,4 +36,24 @@ export const exampleSearch = atom({
       ],
     },
   } as SearchQuery,
+});
+
+interface MapStructure {
+  results: number;
+  data: MapItem[];
+}
+
+interface MapItem {
+  package: string;
+  logo: string;
+  website: string;
+  source: string;
+  vignettes: string[];
+  coord1: number;
+  coord2: number;
+}
+
+export const exampleMapAtom = atom({
+  key: 'map-results',
+  default: exampleMapJson as MapStructure,
 });
