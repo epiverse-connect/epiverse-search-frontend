@@ -1,14 +1,6 @@
-// import React from 'react';
-// import {} from 'd3';
-
-// const PackageMap = () => {
-//   return <div></div>;
-// };
-
-// export default PackageMap;
-
-import React, { useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import * as d3 from 'd3';
+import { MapContext } from './MapContext';
 
 interface DataPoint {
   x: number;
@@ -19,7 +11,10 @@ interface ScatterPlotProps {
   data: DataPoint[];
 }
 
-const ScatterPlot: React.FC<ScatterPlotProps> = ({ data }) => {
+const ScatterPlot: React.FC<ScatterPlotProps> = () => {
+  const exampleMap = useContext(MapContext);
+  console.log(exampleMap);
+
   const svgRef = useRef<SVGSVGElement | null>(null);
 
   useEffect(() => {
@@ -45,22 +40,24 @@ const ScatterPlot: React.FC<ScatterPlotProps> = ({ data }) => {
     const xScale = d3.scaleLinear().domain([-1, 1]).range([0, 500]);
     const yScale = d3.scaleLinear().domain([-1, 1]).range([500, 0]);
 
-    svg
+    const chartGroup = svg.append('g').attr('transform', 'translate(250, 250)');
+
+    chartGroup
       .selectAll('.dot')
-      .data(data)
+      .data(exampleMap.data)
       .enter()
       .append('a')
-      .attr('href', 'https://data.org')
+      .attr('href', (d) => d.website)
       .attr('target', '_blank')
       .append('circle')
-      .attr('cx', (d) => xScale(d.x))
-      .attr('cy', (d) => yScale(d.y))
+      .attr('cx', (d) => xScale(d.coord1) - 250)
+      .attr('cy', (d) => yScale(d.coord2) - 250)
       .attr('r', 5)
       .attr('fill', 'blue')
       .on('mouseover', (event, d) => {
         tooltip
           .style('opacity', 1)
-          .html(`x: ${d.x}, y: ${d.y}`)
+          .html(`Package: ${d.package}<br>x: ${d.coord1}, y: ${d.coord2}`)
           .style('left', `${event.pageX + 5}px`)
           .style('top', `${event.pageY - 28}px`);
       })
@@ -68,16 +65,16 @@ const ScatterPlot: React.FC<ScatterPlotProps> = ({ data }) => {
         tooltip.style('opacity', 0);
       });
 
-    svg
+    chartGroup
       .append('g')
-      .attr('transform', 'translate(0, 250)')
+      .attr('transform', 'translate(-250, 0)')
       .call(d3.axisBottom(xScale))
       .selectAll('text')
       .remove();
 
-    svg
+    chartGroup
       .append('g')
-      .attr('transform', 'translate(250, 0)')
+      .attr('transform', 'translate(0, -250)')
       .call(d3.axisLeft(yScale))
       .selectAll('text')
       .remove();

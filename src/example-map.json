@@ -36,6 +36,15 @@
       "vignettes": [],
       "coord1": 0.384,
       "coord2": -0.684
+    },
+    {
+      "package": "linelist",
+      "logo": "https://epiverse-trace.github.io/linelist/logo.svg",
+      "website": "https://epiverse-trace.github.io/linelist",
+      "source": "https://github.com/epiverse-trace/linelist",
+      "vignettes": [],
+      "coord1": 0.584,
+      "coord2": -0.1324
     }
   ]
 }
