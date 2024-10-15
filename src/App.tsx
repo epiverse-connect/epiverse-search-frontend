@@ -10,6 +10,7 @@ import MapCol from './MapCol';
 import SearchCol from './SearchCol';
 import React from 'react';
 import LogoDataDotOrg from '../public/LogoDataDotOrg.png';
+import GitHubCorner from './GitHubCorner';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Grid first={<SearchCol />} second={<MapCol />} />
         <LogoCloud />
       </div>
+      <GitHubCorner />
     </RecoilRoot>
   );
 }
