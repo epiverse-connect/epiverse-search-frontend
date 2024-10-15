@@ -13,7 +13,7 @@ const GitHubCorner = (
         }
       </style>
       <a
-        href="https://your-url"
+        href="https://github.com/epiverse-connect/epiverse-search-frontend"
         className="github-corner"
         aria-label="View source on GitHub"
       >
