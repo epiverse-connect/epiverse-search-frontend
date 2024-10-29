@@ -18,24 +18,17 @@ export interface SearchResult {
   relevance: number;
 }
 
+// Temporarily unmapped to schema design
+// See https://github.com/epiverse-connect/epiverse-search-frontend/blob/c92ad92fdbc478f34e7e4bd438967f997f20744b/src/atoms.ts#L21
 export const exampleSearch = atom({
   key: 'search-results',
-  default: {
-    query: '',
-    filter: '',
-    response: {
-      results: [
-        {
-          package: 'example',
-          logo: '',
-          website: '',
-          source: '',
-          vignettes: ['example'],
-          relevance: 0,
-        },
-      ],
+  default: [
+    {
+      'Package Name': 'cholera',
+      'File Name': 'streetNames.md',
+      Score: 0.85653406,
     },
-  } as SearchQuery,
+  ],
 });
 
 interface MapStructure {

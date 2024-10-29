@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 import React, { useEffect, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
-import { exampleMapAtom, exampleSearch, SearchResult } from './atoms';
+import { exampleMapAtom, exampleSearch } from './atoms';
 
 interface DataPoint {
   x: number;
@@ -45,8 +45,8 @@ const ScatterPlot: React.FC<ScatterPlotProps> = () => {
     const chartGroup = svg.append('g').attr('transform', 'translate(250, 250)');
 
     // Extract package names from exampleSearchResults.response.results
-    const packageNames = exampleSearchResults.response.results.map(
-      (result: SearchResult) => result.package
+    const packageNames = exampleSearchResults.map(
+      (result) => result['Package Name']
     );
 
     chartGroup

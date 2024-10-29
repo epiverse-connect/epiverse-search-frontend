@@ -1,6 +1,6 @@
 import { useRecoilValue, useSetRecoilState } from 'recoil';
 import { SearchContext } from './SearchContext';
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { exampleSearch } from './atoms';
 
 const SearchCol = () => {
@@ -16,6 +16,17 @@ export default SearchCol;
 const SearchBar = () => {
   const [showSearchResults, setShowSearchResults] = React.useState(false);
   const setSearchResults = useSetRecoilState(exampleSearch);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const handleSearch = async (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const response = await fetch(
+      `${process.env.REACT_APP_BACKEND}/api/?query=${searchQuery}`
+    );
+    const data = await response.json();
+    setSearchResults(data);
+    setShowSearchResults(true);
+  };
 
   return (
     <div>
@@ -52,76 +63,16 @@ const SearchBar = () => {
             id="default-search"
             className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Search Mockups, Logos..."
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
             required
           />
           <button
-            onClick={(e) => {
-              e.preventDefault();
-              setSearchResults({
-                query:
-                  'how to estimate outbreak probability of dengue in colombia in next three months',
-                filter: 'epiverse',
-                response: {
-                  results: [
-                    {
-                      package: 'epidemics',
-                      logo: 'https://epiverse-trace.github.io/epidemics/logo.svg',
-                      website: 'https://epiverse-trace.github.io/epidemics',
-                      source: 'https://github.com/epiverse-trace/epidemics',
-                      vignettes: [
-                        'https://epiverse-trace.github.io/epidemics/articles/modelling_interventions.html',
-                        'https://epiverse-trace.github.io/epidemics/articles/modelling_multiple_interventions.html',
-                      ],
-                      relevance: 0.987,
-                    },
-                    {
-                      package: 'finalsize',
-                      logo: 'https://epiverse-trace.github.io/finalsize/logo.svg',
-                      website: 'https://epiverse-trace.github.io/finalsize',
-                      source: 'https://github.com/epiverse-trace/finalsize',
-                      vignettes: [],
-                      relevance: 0.643,
-                    },
-                    {
-                      package: 'cfr',
-                      logo: 'https://epiverse-trace.github.io/cfr/logo.svg',
-                      website: 'https://epiverse-trace.github.io/cfr',
-                      source: 'https://github.com/epiverse-trace/cfr',
-                      vignettes: [],
-                      relevance: 0.987,
-                    },
-                    {
-                      package: 'epiparameter',
-                      logo: 'https://epiverse-trace.github.io/epiparameter/logo.svg',
-                      website: 'https://epiverse-trace.github.io/epiparameter',
-                      source: 'https://github.com/epiverse-trace/epiparameter',
-                      vignettes: [],
-                      relevance: 0.643,
-                    },
-                  ],
-                },
-              });
-              setShowSearchResults(true);
-            }}
+            onClick={handleSearch}
             onBlur={(e) => {
               e.preventDefault();
               setShowSearchResults(false);
-              setSearchResults({
-                query: '',
-                filter: '',
-                response: {
-                  results: [
-                    {
-                      package: 'example',
-                      logo: '',
-                      website: '',
-                      source: '',
-                      vignettes: ['example'],
-                      relevance: 0,
-                    },
-                  ],
-                },
-              });
+              setSearchResults([]);
             }}
             className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
@@ -149,8 +100,11 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdown-button"
         >
-          {exampleSearchResults.response.results.map((result) => (
-            <SearchResult key={result.package} title={result.package} />
+          {exampleSearchResults.map((result, index) => (
+            <SearchResult
+              key={`${result['Package Name']}-${index}`}
+              title={result['Package Name']}
+            />
           ))}
         </ul>
       </div>
