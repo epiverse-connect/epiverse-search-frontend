@@ -3,466 +3,559 @@
   "data": [
     {
       "package": "denguedatahub",
+      "website": "https://github.com/cran/denguedatahub",
       "coord1": -0.9627,
       "coord2": 1.4179
     },
     {
       "package": "AMR",
+      "website": "https://github.com/cran/AMR",
       "coord1": -0.2246,
       "coord2": 0.1461
     },
     {
       "package": "bets.covid19",
+      "website": "https://github.com/cran/bets.covid19",
       "coord1": 0.4361,
       "coord2": -0.0893
     },
     {
       "package": "trendeval",
+      "website": "https://github.com/cran/trendeval",
       "coord1": 0.3663,
       "coord2": -0.7944
     },
     {
       "package": "pomp",
+      "website": "https://github.com/cran/pomp",
       "coord1": 0.4524,
       "coord2": -0.8908
     },
     {
       "package": "covid19swiss",
+      "website": "https://github.com/cran/covid19swiss",
       "coord1": -0.0149,
       "coord2": 0.5615
     },
     {
       "package": "covid19br",
+      "website": "https://github.com/cran/covid19br",
       "coord1": -1.3725,
       "coord2": 1.1764
     },
     {
       "package": "epiDisplay",
+      "website": "https://github.com/cran/epiDisplay",
       "coord1": -0.0324,
       "coord2": 0.1119
     },
     {
       "package": "HIMA",
+      "website": "https://github.com/cran/HIMA",
       "coord1": -0.1401,
       "coord2": -0.9539
     },
     {
       "package": "cmprsk",
+      "website": "https://github.com/cran/cmprsk",
       "coord1": 0.6552,
       "coord2": -0.8935
     },
     {
       "package": "EpiModel",
+      "website": "https://github.com/cran/EpiModel",
       "coord1": 0.6995,
       "coord2": -0.0818
     },
     {
       "package": "corona",
+      "website": "https://github.com/cran/corona",
       "coord1": 0.6127,
       "coord2": 0.7009
     },
     {
       "package": "epitrix",
+      "website": "https://github.com/cran/epitrix",
       "coord1": -0.1159,
       "coord2": -0.1891
     },
     {
       "package": "outbreaker2",
+      "website": "https://github.com/cran/outbreaker2",
       "coord1": 0.2628,
       "coord2": 0.0406
     },
     {
       "package": "RSurveillance",
+      "website": "https://github.com/cran/RSurveillance",
       "coord1": -0.1279,
       "coord2": -1.0177
     },
     {
       "package": "popEpi",
+      "website": "https://github.com/cran/popEpi",
       "coord1": 0.432,
       "coord2": -0.3846
     },
     {
       "package": "epiR",
+      "website": "https://github.com/cran/epiR",
       "coord1": -0.7604,
       "coord2": -0.5386
     },
     {
       "package": "COVID19",
+      "website": "https://github.com/cran/COVID19",
       "coord1": -0.5437,
       "coord2": 0.9212
     },
     {
       "package": "covid19sf",
+      "website": "https://github.com/cran/covid19sf",
       "coord1": -0.5996,
       "coord2": 0.7434
     },
     {
       "package": "linelist",
+      "website": "https://github.com/cran/linelist",
       "coord1": 0.3597,
       "coord2": 0.213
     },
     {
       "package": "nhanesA",
+      "website": "https://github.com/cran/nhanesA",
       "coord1": -0.2526,
       "coord2": 0.261
     },
     {
       "package": "apisensr",
+      "website": "https://github.com/cran/apisensr",
       "coord1": 0.9637,
       "coord2": 0.4728
     },
     {
       "package": "episensr",
+      "website": "https://github.com/cran/episensr",
       "coord1": -0.8244,
       "coord2": -0.0924
     },
     {
       "package": "covid19france",
+      "website": "https://github.com/cran/covid19france",
       "coord1": 2.5757,
       "coord2": 1.1799
     },
     {
       "package": "NADA",
+      "website": "https://github.com/cran/NADA",
       "coord1": 0.0919,
       "coord2": -0.123
     },
     {
       "package": "Bernadette",
+      "website": "https://github.com/cran/Bernadette",
       "coord1": -0.1515,
       "coord2": 0.5741
     },
     {
       "package": "cholera",
+      "website": "https://github.com/cran/cholera",
       "coord1": 0.4358,
       "coord2": 0.1155
     },
     {
       "package": "earlyR",
+      "website": "https://github.com/cran/earlyR",
       "coord1": -0.5809,
       "coord2": 0.3138
     },
     {
       "package": "surveillance",
+      "website": "https://github.com/cran/surveillance",
       "coord1": 0.2953,
       "coord2": -0.5838
     },
     {
       "package": "dde",
+      "website": "https://github.com/cran/dde",
       "coord1": 0.1209,
       "coord2": -0.3799
     },
     {
       "package": "etm",
+      "website": "https://github.com/cran/etm",
       "coord1": 0.3169,
       "coord2": -0.6291
     },
     {
       "package": "covid19italy",
+      "website": "https://github.com/cran/covid19italy",
       "coord1": -0.2991,
       "coord2": 1.3167
     },
     {
       "package": "CovidMutations",
+      "website": "https://github.com/cran/CovidMutations",
       "coord1": 0.092,
       "coord2": 0.5881
     },
     {
       "package": "epinet",
+      "website": "https://github.com/cran/epinet",
       "coord1": -0.3718,
       "coord2": -0.4851
     },
     {
       "package": "epiflows",
+      "website": "https://github.com/cran/epiflows",
       "coord1": 0.2971,
       "coord2": 0.1866
     },
     {
       "package": "TransPhylo",
+      "website": "https://github.com/cran/TransPhylo",
       "coord1": 0.2639,
       "coord2": -0.066
     },
     {
       "package": "R0",
+      "website": "https://github.com/cran/R0",
       "coord1": 0.3943,
       "coord2": -0.6234
     },
     {
       "package": "EnvStats",
+      "website": "https://github.com/cran/EnvStats",
       "coord1": -0.0194,
       "coord2": -1.0234
     },
     {
       "package": "covid19.analytics",
+      "website": "https://github.com/cran/covid19.analytics",
       "coord1": 1.0065,
       "coord2": 0.5064
     },
     {
       "package": "coarseDataTools",
+      "website": "https://github.com/cran/coarseDataTools",
       "coord1": -0.286,
       "coord2": -0.325
     },
     {
       "package": "malariaAtlas",
+      "website": "https://github.com/cran/malariaAtlas",
       "coord1": 0.7702,
       "coord2": 0.4454
     },
     {
       "package": "cfr",
+      "website": "https://github.com/cran/cfr",
       "coord1": -0.4962,
       "coord2": 0.3496
     },
     {
       "package": "mediation",
+      "website": "https://github.com/cran/mediation",
       "coord1": -0.6186,
       "coord2": -0.7635
     },
     {
       "package": "inctools",
+      "website": "https://github.com/cran/inctools",
       "coord1": -1.0038,
       "coord2": -0.1444
     },
     {
       "package": "EpiILM",
+      "website": "https://github.com/cran/EpiILM",
       "coord1": -0.1637,
       "coord2": -0.9646
     },
     {
       "package": "coronavirus",
+      "website": "https://github.com/cran/coronavirus",
       "coord1": 0.189,
       "coord2": 0.7963
     },
     {
       "package": "mma",
+      "website": "https://github.com/cran/mma",
       "coord1": -0.5611,
       "coord2": -0.3152
     },
     {
       "package": "finalsize",
+      "website": "https://github.com/cran/finalsize",
       "coord1": -0.6926,
       "coord2": 0.3744
     },
     {
       "package": "mstate",
+      "website": "https://github.com/cran/mstate",
       "coord1": 0.1637,
       "coord2": -0.3394
     },
     {
       "package": "EpiSignalDetection",
+      "website": "https://github.com/cran/EpiSignalDetection",
       "coord1": -0.332,
       "coord2": 0.6106
     },
     {
       "package": "deSolve",
+      "website": "https://github.com/cran/deSolve",
       "coord1": 0.2973,
       "coord2": -1.0499
     },
     {
       "package": "endtoend",
+      "website": "https://github.com/cran/endtoend",
       "coord1": -0.9073,
       "coord2": -0.5396
     },
     {
       "package": "powerSurvEpi",
+      "website": "https://github.com/cran/powerSurvEpi",
       "coord1": -0.3896,
       "coord2": -1.3112
     },
     {
       "package": "riskCommunicator",
+      "website": "https://github.com/cran/riskCommunicator",
       "coord1": -0.6478,
       "coord2": -0.285
     },
     {
       "package": "EpiILMCT",
+      "website": "https://github.com/cran/EpiILMCT",
       "coord1": 0.2771,
       "coord2": -0.7582
     },
     {
       "package": "Epi",
+      "website": "https://github.com/cran/Epi",
       "coord1": 0.0416,
       "coord2": -0.5884
     },
     {
       "package": "EpiReport",
+      "website": "https://github.com/cran/EpiReport",
       "coord1": -0.0736,
       "coord2": 0.2745
     },
     {
       "package": "incidence2",
+      "website": "https://github.com/cran/incidence2",
       "coord1": 0.6618,
       "coord2": 0.1136
     },
     {
       "package": "epitools",
+      "website": "https://github.com/cran/epitools",
       "coord1": -0.4871,
       "coord2": -0.3612
     },
     {
       "package": "colmozzie",
+      "website": "https://github.com/cran/colmozzie",
       "coord1": -1.4394,
       "coord2": 0.4603
     },
     {
       "package": "dbparser",
+      "website": "https://github.com/cran/dbparser",
       "coord1": 0.1096,
       "coord2": 0.9207
     },
     {
       "package": "SpatialEpi",
+      "website": "https://github.com/cran/SpatialEpi",
       "coord1": -0.0895,
       "coord2": -0.161
     },
     {
       "package": "diyar",
+      "website": "https://github.com/cran/diyar",
       "coord1": 0.5796,
       "coord2": -0.1046
     },
     {
       "package": "trending",
+      "website": "https://github.com/cran/trending",
       "coord1": -0.19,
       "coord2": 0.1335
     },
     {
       "package": "covid19us",
+      "website": "https://github.com/cran/covid19us",
       "coord1": 1.6811,
       "coord2": 0.9185
     },
     {
       "package": "EpiNow2",
+      "website": "https://github.com/cran/EpiNow2",
       "coord1": 0.4011,
       "coord2": -0.0395
     },
     {
       "package": "epicontacts",
+      "website": "https://github.com/cran/epicontacts",
       "coord1": 0.1114,
       "coord2": 0.2808
     },
     {
       "package": "adegenet",
+      "website": "https://github.com/cran/adegenet",
       "coord1": 0.1543,
       "coord2": -0.3409
     },
     {
       "package": "DSAIDE",
+      "website": "https://github.com/cran/DSAIDE",
       "coord1": -0.3391,
       "coord2": -0.2763
     },
     {
       "package": "bkmr",
+      "website": "https://github.com/cran/bkmr",
       "coord1": 0.3898,
       "coord2": -0.9773
     },
     {
       "package": "tsiR",
+      "website": "https://github.com/cran/tsiR",
       "coord1": 1.1455,
       "coord2": -0.231
     },
     {
       "package": "incidence",
+      "website": "https://github.com/cran/incidence",
       "coord1": 0.3466,
       "coord2": 0.0518
     },
     {
       "package": "EpiContactTrace",
+      "website": "https://github.com/cran/EpiContactTrace",
       "coord1": -0.2521,
       "coord2": -0.2023
     },
     {
       "package": "socialmixr",
+      "website": "https://github.com/cran/socialmixr",
       "coord1": 0.6294,
       "coord2": 0.5956
     },
     {
       "package": "odin",
+      "website": "https://github.com/cran/odin",
       "coord1": 0.7926,
       "coord2": -0.0362
     },
     {
       "package": "memapp",
+      "website": "https://github.com/cran/memapp",
       "coord1": -1.6194,
       "coord2": 0.4485
     },
     {
       "package": "covid19dbcand",
+      "website": "https://github.com/cran/covid19dbcand",
       "coord1": -0.4481,
       "coord2": 1.0715
     },
     {
       "package": "EpiCurve",
+      "website": "https://github.com/cran/EpiCurve",
       "coord1": -0.9907,
       "coord2": 0.6135
     },
     {
       "package": "shinySIR",
+      "website": "https://github.com/cran/shinySIR",
       "coord1": 1.0185,
       "coord2": 0.2405
     },
     {
       "package": "argo",
+      "website": "https://github.com/cran/argo",
       "coord1": 0.4049,
       "coord2": 0.3623
     },
     {
       "package": "nosoi",
+      "website": "https://github.com/cran/nosoi",
       "coord1": 0.183,
       "coord2": 0.0053
     },
     {
       "package": "epibasix",
+      "website": "https://github.com/cran/epibasix",
       "coord1": -1.1632,
       "coord2": -1.1411
     },
     {
       "package": "EpiEstim",
+      "website": "https://github.com/cran/EpiEstim",
       "coord1": -0.7044,
       "coord2": 0.0288
     },
     {
       "package": "nbTransmission",
+      "website": "https://github.com/cran/nbTransmission",
       "coord1": -0.3923,
       "coord2": -0.5029
     },
     {
       "package": "cleanepi",
+      "website": "https://github.com/cran/cleanepi",
       "coord1": 0.8832,
       "coord2": 0.0158
     },
     {
       "package": "modelSSE",
+      "website": "https://github.com/cran/modelSSE",
       "coord1": -0.1023,
       "coord2": -1.1358
     },
     {
       "package": "epimdr",
+      "website": "https://github.com/cran/epimdr",
       "coord1": -0.0041,
       "coord2": 0.349
     },
     {
       "package": "mem",
+      "website": "https://github.com/cran/mem",
       "coord1": 0.7677,
       "coord2": -0.1945
     },
     {
       "package": "contactdata",
+      "website": "https://github.com/cran/contactdata",
       "coord1": -0.1101,
       "coord2": 0.535
     },
     {
       "package": "epitweetr",
+      "website": "https://github.com/cran/epitweetr",
       "coord1": 0.4506,
       "coord2": 0.6006
     },
     {
       "package": "outbreaks",
+      "website": "https://github.com/cran/outbreaks",
       "coord1": -1.3453,
       "coord2": 0.8672
     },
     {
       "package": "o2geosocial",
+      "website": "https://github.com/cran/o2geosocial",
       "coord1": -0.8423,
       "coord2": 0.1767
     },
     {
       "package": "SimInf",
+      "website": "https://github.com/cran/SimInf",
       "coord1": 0.5055,
       "coord2": -0.2589
     }
