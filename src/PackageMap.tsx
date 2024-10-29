@@ -30,8 +30,8 @@ const ScatterPlot: React.FC = () => {
       .style('pointer-events', 'none')
       .style('opacity', 0);
 
-    const xScale = d3.scaleLinear().domain([-1, 1]).range([0, 500]);
-    const yScale = d3.scaleLinear().domain([-1, 1]).range([500, 0]);
+    const xScale = d3.scaleLinear().domain([-1.7, 2.6]).range([0, 500]);
+    const yScale = d3.scaleLinear().domain([-1.35, 1.45]).range([500, 0]);
 
     const chartGroup = svg.append('g').attr('transform', 'translate(250, 250)');
 
