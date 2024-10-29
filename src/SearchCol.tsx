@@ -32,7 +32,7 @@ const SearchBar = () => {
     <div>
       <form className="max-w-md mx-auto">
         <h2 className="text-xl font-bold text-center my-4">
-          Consequat non duis
+          Type your task here
         </h2>
         <label
           htmlFor="default-search"
