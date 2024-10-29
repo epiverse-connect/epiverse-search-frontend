@@ -3,16 +3,7 @@ import React, { useEffect, useRef } from 'react';
 import { useRecoilValue } from 'recoil';
 import { exampleMapAtom, exampleSearch } from './atoms';
 
-interface DataPoint {
-  x: number;
-  y: number;
-}
-
-interface ScatterPlotProps {
-  data: DataPoint[];
-}
-
-const ScatterPlot: React.FC<ScatterPlotProps> = () => {
+const ScatterPlot: React.FC = () => {
   const exampleSearchResults = useRecoilValue(exampleSearch);
   console.log(exampleSearchResults);
   const exampleMap = useRecoilValue(exampleMapAtom);

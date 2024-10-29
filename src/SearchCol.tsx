@@ -18,7 +18,7 @@ const SearchBar = () => {
   const setSearchResults = useSetRecoilState(exampleSearch);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSearch = async (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
     const response = await fetch(
       `${process.env.REACT_APP_BACKEND}/api/?query=${searchQuery}`
@@ -32,7 +32,7 @@ const SearchBar = () => {
     <div>
       <form className="max-w-md mx-auto">
         <h2 className="text-xl font-bold text-center my-4">
-          By asking a question
+          Consequat non duis
         </h2>
         <label
           htmlFor="default-search"
@@ -62,12 +62,15 @@ const SearchBar = () => {
             type="search"
             id="default-search"
             className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Search Mockups, Logos..."
+            placeholder="Cupidatat non officia reprehenderit."
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              handleSearch(e);
+            }}
             required
           />
-          <button
+          {/* <button
             onClick={handleSearch}
             onBlur={(e) => {
               e.preventDefault();
@@ -77,7 +80,7 @@ const SearchBar = () => {
             className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Search
-          </button>
+          </button> */}
         </div>
         <SearchResults show={showSearchResults} />
       </form>
@@ -104,6 +107,8 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
             <SearchResult
               key={`${result['Package Name']}-${index}`}
               title={result['Package Name']}
+              score={result['Score']}
+              filename={result['File Name']}
             />
           ))}
         </ul>
@@ -114,14 +119,27 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
   }
 };
 
-const SearchResult = ({ title }: { title: string }) => {
+const SearchResult = ({
+  title,
+  filename,
+  score,
+}: {
+  title: string;
+  filename: string;
+  score: number;
+}) => {
   return (
     <li>
       <button
         type="button"
-        className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        className="inline-flex flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
       >
         {title}
+        <span className="grow"></span>
+        <code className="ml-2 text-xs text-gray-400">{filename}</code>
+        <span className="inline-flex items-center rounded-full bg-gray-100 px-1.5 py-0.5 text-xs font-medium text-gray-600">
+          {score.toString().slice(0, 5)}
+        </span>
       </button>
     </li>
   );

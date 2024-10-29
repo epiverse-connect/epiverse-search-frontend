@@ -11,14 +11,16 @@ function App() {
       <div className="md:flex flex-col">
         <header className="grow-0 items-center text-center my-16">
           <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
-            Find the right tool for{' '}
+            Ipsum anim officia velit
             <span className="underline underline-offset-3 decoration-8 decoration-blue-400 dark:decoration-blue-600">
-              your epidemiology task.
+              consectetur irure cillum
             </span>
           </h1>
-          <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400">
-            There are a lot of tools out there. We created a custom, efficient,
-            and small AI to help you find the right one.
+          <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400 m-2 lg:m-8">
+            Aliquip irure irure ut aliqua anim occaecat aliqua laborum. Labore
+            proident ex reprehenderit consectetur exercitation et consectetur
+            fugiat culpa duis sunt ullamco commodo. Occaecat deserunt officia
+            dolor sint culpa adipisicing occaecat cillum id aliqua.
           </p>
         </header>
         <Grid first={<SearchCol />} second={<MapCol />} />
