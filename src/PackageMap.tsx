@@ -62,20 +62,6 @@ const ScatterPlot: React.FC = () => {
       .on('mouseout', () => {
         tooltip.style('opacity', 0);
       });
-
-    chartGroup
-      .append('g')
-      .attr('transform', 'translate(-250, 0)')
-      .call(d3.axisBottom(xScale))
-      .selectAll('text')
-      .remove();
-
-    chartGroup
-      .append('g')
-      .attr('transform', 'translate(0, -250)')
-      .call(d3.axisLeft(yScale))
-      .selectAll('text')
-      .remove();
   });
 
   return <svg ref={svgRef}></svg>;
