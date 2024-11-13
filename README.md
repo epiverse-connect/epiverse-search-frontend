@@ -17,3 +17,10 @@ If you want to do things for production:
 npm test # run unit tests
 npm run build # build the production version
 ```
+
+## Related
+
+The search is further detailed in the following repo's:
+
+- [`epiverse-search`](https://github.com/epiverse-connect/epiverse-search): Specifications, designs
+- [`epiverse-search-backend`](https://github.com/epiverse-connect/epiverse-search-backend): Backend deployment implementation
