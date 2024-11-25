@@ -1,6 +1,5 @@
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { SearchContext } from './SearchContext';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { exampleSearch } from './atoms';
 
 const SearchCol = () => {
@@ -20,12 +19,18 @@ const SearchBar = () => {
 
   const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault();
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND}/api/?query=${searchQuery}`
-    );
-    const data = await response.json();
-    setSearchResults(data);
-    setShowSearchResults(true);
+    if (process.env.REACT_APP_BACKEND) {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND}/api/?query=${searchQuery}`
+      );
+      const data = await response.json();
+      setSearchResults(data);
+      setShowSearchResults(true);
+    } else {
+      alert(
+        'No backend URL found. Please set REACT_APP_BACKEND in your .env file.'
+      );
+    }
   };
 
   return (
@@ -103,12 +108,12 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdown-button"
         >
-          {exampleSearchResults.map((result, index) => (
+          {exampleSearchResults.response.results.map((result, index) => (
             <SearchResult
-              key={`${result['Package Name']}-${index}`}
-              title={result['Package Name']}
-              score={result['Score']}
-              filename={result['File Name']}
+              key={index}
+              title={result.package}
+              // filename="test"
+              score={result.relevance}
             />
           ))}
         </ul>
@@ -121,11 +126,11 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
 
 const SearchResult = ({
   title,
-  filename,
+  // filename,
   score,
 }: {
   title: string;
-  filename: string;
+  // filename: string;
   score: number;
 }) => {
   return (
@@ -136,7 +141,7 @@ const SearchResult = ({
       >
         {title}
         <span className="grow"></span>
-        <code className="ml-2 text-xs text-gray-400">{filename}</code>
+        {/* <code className="ml-2 text-xs text-gray-400">{filename}</code> */}
         <span className="inline-flex items-center rounded-full bg-gray-100 px-1.5 py-0.5 text-xs font-medium text-gray-600">
           {score.toString().slice(0, 5)}
         </span>
