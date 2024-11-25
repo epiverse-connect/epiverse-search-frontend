@@ -17,13 +17,13 @@ const SearchBar = () => {
   const setSearchResults = useSetRecoilState(exampleSearch);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
+  const handleSearch = async () => {
     if (process.env.REACT_APP_BACKEND) {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND}/api/?query=${searchQuery}`
+        `${process.env.REACT_APP_BACKEND}/search?query=${encodeURIComponent(searchQuery)}`
       );
       const data = await response.json();
+      console.log(data);
       setSearchResults(data);
       setShowSearchResults(true);
     } else {
@@ -71,21 +71,25 @@ const SearchBar = () => {
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
-              handleSearch(e);
+              //   handleSearch(e);
             }}
             required
           />
-          {/* <button
-            onClick={handleSearch}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleSearch();
+            }}
             onBlur={(e) => {
               e.preventDefault();
               setShowSearchResults(false);
-              setSearchResults([]);
+              // setSearchResults([]);
             }}
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-35"
+            disabled={!searchQuery}
           >
             Search
-          </button> */}
+          </button>
         </div>
         <SearchResults show={showSearchResults} />
       </form>
@@ -108,14 +112,16 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdown-button"
         >
-          {exampleSearchResults.response.results.map((result, index) => (
-            <SearchResult
-              key={index}
-              title={result.package}
-              // filename="test"
-              score={result.relevance}
-            />
-          ))}
+          {exampleSearchResults.response.results
+            .slice(0, 5)
+            .map((result, index) => (
+              <SearchResult
+                key={index}
+                title={result.package}
+                // filename="test"
+                score={result.relevance}
+              />
+            ))}
         </ul>
       </div>
     );

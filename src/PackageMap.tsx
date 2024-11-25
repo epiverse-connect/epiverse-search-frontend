@@ -5,7 +5,6 @@ import { exampleMapAtom, exampleSearch, SearchResult } from './atoms';
 
 const ScatterPlot: React.FC = () => {
   const exampleSearchResults = useRecoilValue(exampleSearch);
-  console.log(exampleSearchResults);
   const exampleMap = useRecoilValue(exampleMapAtom);
 
   const svgRef = useRef<SVGSVGElement | null>(null);
