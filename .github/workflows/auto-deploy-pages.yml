@@ -11,22 +11,26 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
 
-    - name: Install dependencies, build website
-      run: |
-       npm install
-       npm run build
-    
-    - name: Deploy 
-      uses: peaceiris/actions-gh-pages@v3
-      with:
+      - name: Download latest map data
+        run: |
+          curl -L https://raw.githubusercontent.com/epiverse-connect/epiverse-map-backend/refs/heads/main/inst/extdata/map_data.json -o src/example-map.json
+
+      - name: Install dependencies, build website
+        run: |
+          npm install
+          npm run build
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
           publish_branch: gh-pages
