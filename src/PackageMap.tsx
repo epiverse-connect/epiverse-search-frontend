@@ -50,7 +50,10 @@ const ScatterPlot: React.FC = () => {
       .attr('cx', (d) => xScale(d.coord1) - 250)
       .attr('cy', (d) => yScale(d.coord2) - 250)
       .attr('r', 5)
-      .attr('fill', (d) => (packageNames.includes(d.package) ? 'red' : 'blue'))
+      // .attr('fill', (d) => (packageNames.includes(d.package) ? 'red' : 'blue'))
+      .attr('class', (d) =>
+        packageNames.includes(d.package) ? 'fill-selected' : 'fill-unselected'
+      )
       .on('mouseover', (event, d) => {
         tooltip
           .style('opacity', 1)
