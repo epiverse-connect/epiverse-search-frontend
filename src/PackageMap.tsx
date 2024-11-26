@@ -44,7 +44,7 @@ const ScatterPlot: React.FC = () => {
       .data(exampleMap.data)
       .enter()
       .append('a')
-      .attr('href', (d) => d.website)
+      .attr('href', (d) => d.website || d.source)
       .attr('target', '_blank')
       .append('circle')
       .attr('cx', (d) => xScale(d.coord1) - 250)
@@ -55,9 +55,13 @@ const ScatterPlot: React.FC = () => {
         packageNames.includes(d.package) ? 'fill-selected' : 'fill-unselected'
       )
       .on('mouseover', (event, d) => {
+        const logoHtml = d.logo
+          ? `<img src="${d.logo}" alt="${d.package} logo" style="width: auto; height: 150px; margin-right: 5px;">`
+          : '';
+
         tooltip
           .style('opacity', 1)
-          .html(`Package: ${d.package}<br>x: ${d.coord1}, y: ${d.coord2}`)
+          .html(`${logoHtml}Package: ${d.package}`)
           .style('left', `${event.pageX + 5}px`)
           .style('top', `${event.pageY - 28}px`);
       })
