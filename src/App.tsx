@@ -17,8 +17,8 @@ function App() {
             </span>
           </h1>
           <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400 m-2 lg:m-8">
-            Please describe the task you would like and we will list the tools
-            that are relevant.
+            Please describe the epidemiological task you would like the tools
+            for.
           </p>
         </header>
         <Grid first={<SearchCol />} second={<MapCol />} />

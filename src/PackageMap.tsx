@@ -49,6 +49,7 @@ const ScatterPlot: React.FC = () => {
       .append('circle')
       .attr('cx', (d) => xScale(d.coord1) - 250)
       .attr('cy', (d) => yScale(d.coord2) - 250)
+      .attr('id', (d) => d.package)
       .attr('r', 5)
       // .attr('fill', (d) => (packageNames.includes(d.package) ? 'red' : 'blue'))
       .attr('class', (d) =>
@@ -68,6 +69,58 @@ const ScatterPlot: React.FC = () => {
       .on('mouseout', () => {
         tooltip.style('opacity', 0);
       });
+
+    const handleCustomEvent = (event: CustomEvent) => {
+      const { title } = event.detail;
+      const selectedGroup = d3.select(`#${title}`) as d3.Selection<
+        SVGCircleElement,
+        unknown,
+        // eslint-disable-next-line
+        any,
+        unknown
+      >;
+      if (!selectedGroup.empty()) {
+        const d = selectedGroup.datum() as {
+          logo?: string;
+          package: string;
+          coord1: number;
+          coord2: number;
+        };
+        console.log(d);
+        const logoHtml = d.logo
+          ? `<img src="${d.logo}" alt="${d.package} logo" style="width: auto; height: 150px; margin-right: 5px;">`
+          : '';
+
+        // Get the bounding box of the selected item
+        const bbox = (
+          selectedGroup.node() as SVGGraphicsElement
+        ).getBoundingClientRect();
+        console.log(bbox);
+        tooltip
+          .style('opacity', 1)
+          .html(`${logoHtml}Package: ${d.package}`)
+          .style('left', `${bbox.left + window.scrollX + bbox.width / 2 + 5}px`)
+          .style('top', `${bbox.top + window.scrollY - 28}px`);
+      }
+    };
+
+    document.addEventListener(
+      'onResultHover',
+      handleCustomEvent as EventListener
+    );
+    // Trigger the custom event for demonstration purposes
+    chartGroup.selectAll('circle').each(function (d) {
+      const event = new CustomEvent('onResultHover', { detail: d });
+      console.log(d);
+      document.dispatchEvent(event);
+    });
+
+    return () => {
+      document.removeEventListener(
+        'onResultHover',
+        handleCustomEvent as EventListener
+      );
+    };
   });
 
   return <svg ref={svgRef}></svg>;

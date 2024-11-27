@@ -69,7 +69,7 @@ const SearchBar = () => {
             type="search"
             id="default-search"
             className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Cupidatat non officia reprehenderit."
+            placeholder="Epidemiological task here..."
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
@@ -120,8 +120,10 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
               <SearchResult
                 key={index}
                 title={result.package}
+                url={result.website || result.source}
                 // filename="test"
                 score={result.relevance}
+                logo={result.logo[0]}
               />
             ))}
         </ul>
@@ -135,25 +137,45 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
 const SearchResult = ({
   title,
   // filename,
+  url,
+  logo,
   score,
 }: {
   title: string;
   // filename: string;
+  url: string;
+  logo?: string;
   score: number;
 }) => {
+  const handlePointerOver = () => {
+    const customEvent = new CustomEvent('onResultHover', {
+      detail: { title, logo, url, score },
+    });
+    document.dispatchEvent(customEvent);
+  };
   return (
     <li>
-      <button
-        type="button"
+      <a
+        href={url}
+        target="_blank"
+        rel="noreferrer"
         className="inline-flex flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        onPointerOver={handlePointerOver}
       >
+        {logo && (
+          <img
+            src={logo}
+            alt={`Logo of ${title}`}
+            className="w-auto h-max-4 h-4 mx-2"
+          />
+        )}
         {title}
         <span className="grow"></span>
         {/* <code className="ml-2 text-xs text-gray-400">{filename}</code> */}
         <span className="inline-flex items-center rounded-full bg-gray-100 px-1.5 py-0.5 text-xs font-medium text-gray-600">
           {score.toString().slice(0, 5)}
         </span>
-      </button>
+      </a>
     </li>
   );
 };
