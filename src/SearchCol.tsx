@@ -88,7 +88,7 @@ const SearchBar = () => {
               // setSearchResults([]);
             }}
             className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-35"
-            disabled={!searchQuery || !/\s/.test(searchQuery)}
+            disabled={!searchQuery}
           >
             Search
           </button>
@@ -106,6 +106,7 @@ interface showSearchResultsProps {
 
 const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
   const exampleSearchResults = useRecoilValue(exampleSearch);
+  console.log(exampleSearchResults);
 
   if (show) {
     return (
@@ -120,7 +121,7 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
               <SearchResult
                 key={index}
                 title={result.package}
-                url={result.website || result.source}
+                url={result.website[0] || result.source}
                 // filename="test"
                 score={result.relevance}
                 logo={result.logo[0]}
