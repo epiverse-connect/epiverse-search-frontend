@@ -8,7 +8,7 @@ import GitHubCorner from './GitHubCorner';
 function App() {
   return (
     <RecoilRoot>
-      <div className="md:flex flex-col">
+      <div className="md:flex flex-col dark:bg-gray-900 dark:text-gray-50">
         <header className="grow-0 items-center text-center my-16">
           <h1 className="mb-4 text-4xl font-extrabold leading-none tracking-tight text-gray-900 md:text-5xl lg:text-6xl dark:text-white">
             Epiverse{' '}
@@ -17,8 +17,8 @@ function App() {
             </span>
           </h1>
           <p className="text-lg font-normal text-gray-500 lg:text-xl dark:text-gray-400 m-2 lg:m-8">
-            Please describe the task you would like and we will list the tools
-            that are relevant.
+            Please describe the epidemiological task you would like the tools
+            for.
           </p>
         </header>
         <Grid first={<SearchCol />} second={<MapCol />} />
@@ -33,7 +33,7 @@ export default App;
 
 const LogoCloud = () => {
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <div className="py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto grid max-w-lg grid-cols-2 items-center gap-x-8 gap-y-12 sm:max-w-xl sm:gap-x-10 sm:gap-y-14 lg:mx-0 lg:max-w-none">
           <img
@@ -41,7 +41,7 @@ const LogoCloud = () => {
             src="https://github.com/epiverse-trace/epiverse-trace.github.io/blob/main/public/LogoDataDotOrg.png?raw=true"
             width={158}
             height={48}
-            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1"
+            className="col-span-2 max-h-12 w-full object-contain lg:col-span-1 dark:invert"
           />
           <img
             alt="World Health Organization"

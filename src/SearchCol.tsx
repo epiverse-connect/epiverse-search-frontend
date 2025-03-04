@@ -1,6 +1,5 @@
 import { useRecoilValue, useSetRecoilState } from 'recoil';
-import { SearchContext } from './SearchContext';
-import React, { useContext, useState } from 'react';
+import React, { useState } from 'react';
 import { exampleSearch } from './atoms';
 
 const SearchCol = () => {
@@ -18,14 +17,22 @@ const SearchBar = () => {
   const setSearchResults = useSetRecoilState(exampleSearch);
   const [searchQuery, setSearchQuery] = useState('');
 
-  const handleSearch = async (e: React.ChangeEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const response = await fetch(
-      `${process.env.REACT_APP_BACKEND}/api/?query=${searchQuery}`
-    );
-    const data = await response.json();
-    setSearchResults(data);
-    setShowSearchResults(true);
+  const handleSearch = async () => {
+    if (process.env.REACT_APP_BACKEND) {
+      const response = await fetch(
+        `${process.env.REACT_APP_BACKEND}/search?query=${encodeURIComponent(searchQuery)}`
+      );
+      const data = await response.json();
+      console.log(data);
+      if (!data.error) {
+        setSearchResults(data);
+        setShowSearchResults(true);
+      }
+    } else {
+      alert(
+        'No backend URL found. Please set REACT_APP_BACKEND in your .env file.'
+      );
+    }
   };
 
   return (
@@ -62,25 +69,29 @@ const SearchBar = () => {
             type="search"
             id="default-search"
             className="block w-full p-4 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder="Cupidatat non officia reprehenderit."
+            placeholder="Epidemiological task here..."
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
-              handleSearch(e);
+              //   handleSearch(e);
             }}
             required
           />
-          {/* <button
-            onClick={handleSearch}
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              handleSearch();
+            }}
             onBlur={(e) => {
               e.preventDefault();
               setShowSearchResults(false);
-              setSearchResults([]);
+              // setSearchResults([]);
             }}
-            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-35"
+            disabled={!searchQuery}
           >
             Search
-          </button> */}
+          </button>
         </div>
         <SearchResults show={showSearchResults} />
       </form>
@@ -95,6 +106,7 @@ interface showSearchResultsProps {
 
 const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
   const exampleSearchResults = useRecoilValue(exampleSearch);
+  console.log(exampleSearchResults);
 
   if (show) {
     return (
@@ -103,14 +115,18 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdown-button"
         >
-          {exampleSearchResults.map((result, index) => (
-            <SearchResult
-              key={`${result['Package Name']}-${index}`}
-              title={result['Package Name']}
-              score={result['Score']}
-              filename={result['File Name']}
-            />
-          ))}
+          {exampleSearchResults.response.results
+            .slice(0, 5)
+            .map((result, index) => (
+              <SearchResult
+                key={index}
+                title={result.package}
+                url={result.website[0] || result.source}
+                // filename="test"
+                score={result.relevance}
+                logo={result.logo[0]}
+              />
+            ))}
         </ul>
       </div>
     );
@@ -121,26 +137,46 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
 
 const SearchResult = ({
   title,
-  filename,
+  // filename,
+  url,
+  logo,
   score,
 }: {
   title: string;
-  filename: string;
+  // filename: string;
+  url: string;
+  logo?: string;
   score: number;
 }) => {
+  const handlePointerOver = () => {
+    const customEvent = new CustomEvent('onResultHover', {
+      detail: { title, logo, url, score },
+    });
+    document.dispatchEvent(customEvent);
+  };
   return (
     <li>
-      <button
-        type="button"
+      <a
+        href={url}
+        target="_blank"
+        rel="noreferrer"
         className="inline-flex flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+        onPointerOver={handlePointerOver}
       >
+        {logo && (
+          <img
+            src={logo}
+            alt={`Logo of ${title}`}
+            className="w-auto h-max-4 h-4 mx-2"
+          />
+        )}
         {title}
         <span className="grow"></span>
-        <code className="ml-2 text-xs text-gray-400">{filename}</code>
+        {/* <code className="ml-2 text-xs text-gray-400">{filename}</code> */}
         <span className="inline-flex items-center rounded-full bg-gray-100 px-1.5 py-0.5 text-xs font-medium text-gray-600">
           {score.toString().slice(0, 5)}
         </span>
-      </button>
+      </a>
     </li>
   );
 };
