@@ -21,7 +21,8 @@ function App() {
             for.
           </p>
         </header>
-        <Grid first={<SearchCol />} second={<MapCol />} />
+        <SearchCol />
+        {/* <Grid first={} second={<></>} /> */}
         <LogoCloud />
       </div>
       <GitHubCorner />
