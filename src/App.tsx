@@ -53,33 +53,6 @@ const LogoCloud = () => {
           />
         </div>
       </div>
-      <CrossRefData />
-    </div>
-  );
-};
-
-const CrossRefData: React.FC = () => {
-  const [data, setData] = useState<string | null>(null);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://api.crossref.org/works/');
-        const text = await response.text();
-        setData(text);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-        setData('Error fetching data');
-      }
-    };
-
-    fetchData();
-  }, []);
-
-  return (
-    <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">CrossRef Data</h2>
-      <pre className="text-sm overflow-auto">{data}</pre>
     </div>
   );
 };
