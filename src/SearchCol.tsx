@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import exampleSearchData from '../src/example-search.json';
 
 const SearchCol = () => {
   const [searchQuery, setSearchQuery] = useState('');
@@ -79,6 +80,20 @@ const SearchCol = () => {
         </div>
         <SearchResults results={results} />
       </form>
+      <button
+        onClick={() => {
+          if (JSON.stringify(results) == '{}') {
+            setResults(exampleSearchData);
+          } else {
+            setResults({});
+          }
+        }}
+        className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-35"
+      >
+        {JSON.stringify(results) == '{}'
+          ? 'Set example results'
+          : 'Remove example results'}
+      </button>
     </div>
   );
 };
