@@ -20,7 +20,7 @@ const SearchBar = () => {
   const handleSearch = async () => {
     if (process.env.REACT_APP_BACKEND) {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND}/search?query=${encodeURIComponent(searchQuery)}`
+        `${process.env.REACT_APP_BACKEND}/?query=${encodeURIComponent(searchQuery)}`
       );
       const data = await response.json();
       console.log(data);
