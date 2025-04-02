@@ -1,21 +1,8 @@
-import { useRecoilValue, useSetRecoilState } from 'recoil';
 import React, { useState } from 'react';
-import { exampleSearch } from './atoms';
 
 const SearchCol = () => {
-  return (
-    <div>
-      <SearchBar />
-    </div>
-  );
-};
-
-export default SearchCol;
-
-const SearchBar = () => {
-  const [showSearchResults, setShowSearchResults] = React.useState(false);
-  const setSearchResults = useSetRecoilState(exampleSearch);
   const [searchQuery, setSearchQuery] = useState('');
+  const [results, setResults] = useState({});
 
   const handleSearch = async () => {
     if (process.env.REACT_APP_BACKEND) {
@@ -23,10 +10,9 @@ const SearchBar = () => {
         `${process.env.REACT_APP_BACKEND}/?query=${encodeURIComponent(searchQuery)}`
       );
       const data = await response.json();
-      console.log(data);
+
       if (!data.error) {
-        setSearchResults(data);
-        setShowSearchResults(true);
+        setResults(data);
       }
     } else {
       alert(
@@ -73,7 +59,6 @@ const SearchBar = () => {
             value={searchQuery}
             onChange={(e) => {
               setSearchQuery(e.target.value);
-              //   handleSearch(e);
             }}
             required
           />
@@ -84,8 +69,7 @@ const SearchBar = () => {
             }}
             onBlur={(e) => {
               e.preventDefault();
-              setShowSearchResults(false);
-              // setSearchResults([]);
+              setResults({});
             }}
             className="text-white absolute end-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 disabled:opacity-35"
             disabled={!searchQuery}
@@ -93,40 +77,47 @@ const SearchBar = () => {
             Search
           </button>
         </div>
-        <SearchResults show={showSearchResults} />
+        <SearchResults results={results} />
       </form>
     </div>
   );
 };
 
-// eslint-disable-next-line react/prop-types
-interface showSearchResultsProps {
-  show: boolean;
+export default SearchCol;
+
+interface SearchResultsProps {
+  // eslint-disable-next-line
+  results: any;
 }
 
-const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
-  const exampleSearchResults = useRecoilValue(exampleSearch);
-  console.log(exampleSearchResults);
-
-  if (show) {
+const SearchResults: React.FC<SearchResultsProps> = ({ results }) => {
+  if (JSON.stringify(results) != '{}') {
     return (
       <div className="z-10 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700">
         <ul
           className="py-2 text-sm text-gray-700 dark:text-gray-200"
           aria-labelledby="dropdown-button"
         >
-          {exampleSearchResults.response.results
-            .slice(0, 5)
-            .map((result, index) => (
+          {results.response.results.slice(0, 5).map(
+            (
+              result: {
+                package: string;
+                website: string;
+                source: string;
+                relevance: number;
+                logo: (string | undefined)[];
+              },
+              index: React.Key | null | undefined
+            ) => (
               <SearchResult
                 key={index}
                 title={result.package}
                 url={result.website[0] || result.source}
-                // filename="test"
                 score={result.relevance}
                 logo={result.logo[0]}
               />
-            ))}
+            )
+          )}
         </ul>
       </div>
     );
@@ -137,31 +128,22 @@ const SearchResults: React.FC<showSearchResultsProps> = ({ show }) => {
 
 const SearchResult = ({
   title,
-  // filename,
   url,
   logo,
   score,
 }: {
   title: string;
-  // filename: string;
   url: string;
   logo?: string;
   score: number;
 }) => {
-  const handlePointerOver = () => {
-    const customEvent = new CustomEvent('onResultHover', {
-      detail: { title, logo, url, score },
-    });
-    document.dispatchEvent(customEvent);
-  };
   return (
     <li>
       <a
         href={url}
         target="_blank"
         rel="noreferrer"
-        className="inline-flex flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-        onPointerOver={handlePointerOver}
+        className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
       >
         {logo && (
           <img
