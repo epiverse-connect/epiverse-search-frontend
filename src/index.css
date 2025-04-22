@@ -1,3 +1,14 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  font-family: 'Source Sans 3', sans-serif;
+  color: #00205c;
+}
+
+.button {
+  background-color: #00205c;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  color: white;
+}
