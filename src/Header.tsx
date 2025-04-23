@@ -1,0 +1,39 @@
+import React from 'react';
+import CollaboratoryLogo from './Collaboratory';
+import DataDotOrg from './DataDotOrg';
+
+const Header = () => {
+  return (
+    <header className="flex">
+      <a
+        href="#"
+        className="flex justify-center align-middle items-center sm:w-64 w-32"
+      >
+        <CollaboratoryLogo width={379} />
+      </a>
+      <a
+        href="https://data.org"
+        className="justify-center align-middle items-center mx-8 hidden lg:flex"
+      >
+        <DataDotOrg width={150} />
+      </a>
+      <span className="flex-grow"></span>
+      <span className="flex justify-center align-middle items-center">
+        <a href="#" className="sm:hidden inline-block align-middle">
+          About
+        </a>
+        <a href="#" className="hidden sm:inline-block align-middle">
+          About Collaboratory
+        </a>
+        <a href="#" className="button hidden sm:inline ml-4">
+          Join Collaboratory
+        </a>
+        <a href="#" className="sm:hidden button ml-4">
+          Join
+        </a>
+      </span>
+    </header>
+  );
+};
+
+export default Header;
