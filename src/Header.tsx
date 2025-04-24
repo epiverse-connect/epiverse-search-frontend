@@ -5,6 +5,8 @@ import DataDotOrg from './DataDotOrg';
 const Header = () => {
   return (
     <header className="flex">
+      <span className="w-[65px]"></span>
+
       <a href="#" className="flex justify-center align-middle items-center">
         <CollaboratoryLogo width={379 / 3} />
       </a>

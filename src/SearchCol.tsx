@@ -27,9 +27,30 @@ const SearchCol = () => {
 
   return (
     <>
-      <div className="mt-16 mb-2 mx-2 font-normal">
+      <div className="mt-6 mb-2 mx-2 font-normal">
         {about && (
-          <div className="max-w-xl mx-auto mb-4">
+          <div className="relative max-w-xl mx-auto mb-4">
+            <button
+              className="absolute top-0 right-0 cursor-pointer"
+              onClick={() => {
+                showAbout(!about);
+              }}
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width={20}
+                height={20}
+                fill="none"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fill="#0F1729"
+                  fillRule="evenodd"
+                  d="M5.293 5.293a1 1 0 0 1 1.414 0L12 10.586l5.293-5.293a1 1 0 1 1 1.414 1.414L13.414 12l5.293 5.293a1 1 0 0 1-1.414 1.414L12 13.414l-5.293 5.293a1 1 0 0 1-1.414-1.414L10.586 12 5.293 6.707a1 1 0 0 1 0-1.414Z"
+                  clipRule="evenodd"
+                />
+              </svg>
+            </button>
             <h2 className="font-semibold text-lg">About this search</h2>
             <p className="">
               Far far away, behind the word mountains, far from the countries
@@ -44,6 +65,8 @@ const SearchCol = () => {
           </div>
         )}
         <div className="flex">
+          <span className="w-[65px]"></span>
+
           <span className="underline mr-2 hover:opacity-60 cursor-pointer px-4 py-2">
             Packages
           </span>
@@ -68,7 +91,8 @@ const SearchCol = () => {
         <label htmlFor="default-search" className="sr-only">
           Search bar
         </label>
-        <div className="relative">
+        <div className="relative flex">
+          <span className="w-[65px]"></span>
           <input
             type="search"
             id="default-search"
@@ -144,9 +168,12 @@ const SearchResults: React.FC<SearchResultsProps> = ({ results, first }) => {
   if (JSON.stringify(results) != '{}') {
     return (
       <div className="py-8">
-        <h2 className="text-lg">
-          Search results 1-{results.response.results.length}
-        </h2>
+        <div className="flex">
+          <span className="w-[65px]"></span>
+          <h2 className="text-lg">
+            Search results 1-{results.response.results.length}
+          </h2>
+        </div>
         <div className="z-10 divide-y divide-gray-100 my-4">
           <ul aria-labelledby="dropdown-button">
             {results.response.results.slice(0, 5).map(
@@ -221,7 +248,7 @@ const SearchResult = ({
       className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
     >
       <li className="flex hover:bg-gray-100">
-        <div className="flex col-span-1 w-[65px] justify-center align-middle items-center">
+        <div className="flex w-[65px] justify-center align-middle items-center">
           {logo && (
             <img
               src={logo}
@@ -230,7 +257,7 @@ const SearchResult = ({
             />
           )}
         </div>
-        <div className="col-span-11 w-full text-sm">
+        <div className="w-full text-sm">
           <div className="w-16 bg-gray-200 rounded-full h-1.5 mb-2 dark:bg-gray-700">
             <div
               className="bg-[#F4A81D] h-1.5 rounded-full dark:bg-blue-500"
