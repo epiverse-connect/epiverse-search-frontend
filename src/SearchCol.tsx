@@ -5,6 +5,7 @@ const SearchCol = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState({});
   const [first, setFirst] = useState(true);
+  const [about, showAbout] = useState(false);
 
   const handleSearch = async () => {
     if (process.env.REACT_APP_BACKEND) {
@@ -26,7 +27,44 @@ const SearchCol = () => {
 
   return (
     <>
-      <form className="w-[90%] mx-auto mt-16 text-lg">
+      <div className="mt-16 mb-2 mx-2 font-normal">
+        {about && (
+          <div className="max-w-xl mx-auto mb-4">
+            <h2 className="font-semibold text-lg">About this search</h2>
+            <p className="">
+              Far far away, behind the word mountains, far from the countries
+              Vokalia and Consonantia, there live the blind texts. Separated
+              they live in Bookmarksgrove right at the coast of the Semantics, a
+              large language ocean. A small river named Duden flows by their
+              place and supplies it with the necessary regelialia. It is a
+              paradisematic country, in which roasted parts of sentences fly
+              into your mouth. Even the all-powerful Pointing has no control
+              about the blind texts it is an almost unorthographic life 
+            </p>
+          </div>
+        )}
+        <div className="flex">
+          <span className="underline mr-2 hover:opacity-60 cursor-pointer px-4 py-2">
+            Packages
+          </span>
+          <span className="text-gray-300 mr-2 px-4 py-2 cursor-not-allowed">
+            Articles
+          </span>
+          <span className="text-gray-300 mr-2 px-4 py-2 cursor-not-allowed">
+            Recent builds
+          </span>
+          <span className="flex-grow"></span>
+          <button
+            className="px-4 py-2 underline cursor-pointer"
+            onClick={() => {
+              showAbout(!about);
+            }}
+          >
+            About this search
+          </button>
+        </div>
+      </div>
+      <form className="w-full text-lg">
         <label htmlFor="default-search" className="sr-only">
           Search bar
         </label>
@@ -105,11 +143,11 @@ interface SearchResultsProps {
 const SearchResults: React.FC<SearchResultsProps> = ({ results, first }) => {
   if (JSON.stringify(results) != '{}') {
     return (
-      <div className="py-8 sm:px-4">
+      <div className="py-8">
         <h2 className="text-lg">
           Search results 1-{results.response.results.length}
         </h2>
-        <div className="z-10 divide-y divide-gray-100 sm:-mx-16 my-4">
+        <div className="z-10 divide-y divide-gray-100 my-4">
           <ul aria-labelledby="dropdown-button">
             {results.response.results.slice(0, 5).map(
               (
@@ -176,15 +214,24 @@ const SearchResult = ({
   const score = Math.random();
 
   return (
-    <li className="mx-auto">
-      <a
-        href={url || source}
-        target="_blank"
-        rel="noreferrer"
-        className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-      >
-        <span className="text-sm">
-          <div className="w-32 bg-gray-200 rounded-full h-1.5 mb-2 dark:bg-gray-700">
+    <a
+      href={url || source}
+      target="_blank"
+      rel="noreferrer"
+      className="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+    >
+      <li className="flex hover:bg-gray-100">
+        <div className="flex col-span-1 w-[65px] justify-center align-middle items-center">
+          {logo && (
+            <img
+              src={logo}
+              alt={`Logo of ${title} package`}
+              className="h-[auto] w-[40px]"
+            />
+          )}
+        </div>
+        <div className="col-span-11 w-full text-sm">
+          <div className="w-16 bg-gray-200 rounded-full h-1.5 mb-2 dark:bg-gray-700">
             <div
               className="bg-[#F4A81D] h-1.5 rounded-full dark:bg-blue-500"
               style={{ width: `${score * 100}%` }}
@@ -195,38 +242,43 @@ const SearchResult = ({
           </p>
           <p className="font-normal">{description}</p>
           <p className="pt-1 pb-4">
-            <a href={url} className="mx-4 underline">
-              Website
-            </a>
-
-            <a href={source} className="mx-4 underline">
-              Source
-            </a>
-
-            <a href={`${source}/issues`} className="mx-4 underline">
-              Bug Tracker
-            </a>
-
+            {url ? (
+              <>
+                <a href={source} className="hover:opacity-60 underline">
+                  Source
+                </a>
+                <a
+                  href={`${source}/issues`}
+                  className="hover:opacity-60 mx-4 underline"
+                >
+                  Bug Tracker
+                </a>
+              </>
+            ) : (
+              <a
+                href={`${source}/issues`}
+                className="hover:opacity-60 mr-4 underline"
+              >
+                Bug Tracker
+              </a>
+            )}
             {vignettes && (
-              <span className="mx-4">
+              <span className="">
                 Vignette{' '}
                 {vignettes.map((vignette, index) => (
-                  <a href={vignette} key={vignette} className="underline mx-1">
+                  <a
+                    href={vignette}
+                    key={vignette}
+                    className=" hover:opacity-60 underline mr-1"
+                  >
                     {index + 1}
                   </a>
                 ))}
               </span>
             )}
           </p>
-        </span>
-        {logo && (
-          <img
-            src={logo}
-            alt={`Logo of ${title} package`}
-            className="h-max-4 w-[80px] mx-2"
-          />
-        )}
-      </a>
-    </li>
+        </div>
+      </li>
+    </a>
   );
 };

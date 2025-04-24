@@ -5,17 +5,14 @@ import DataDotOrg from './DataDotOrg';
 const Header = () => {
   return (
     <header className="flex">
-      <a
-        href="#"
-        className="flex justify-center align-middle items-center sm:w-64 w-32"
-      >
-        <CollaboratoryLogo width={379} />
+      <a href="#" className="flex justify-center align-middle items-center">
+        <CollaboratoryLogo width={379 / 3} />
       </a>
       <a
         href="https://data.org"
         className="justify-center align-middle items-center mx-8 hidden lg:flex"
       >
-        <DataDotOrg width={150} />
+        <DataDotOrg width={150 / 2} />
       </a>
       <span className="flex-grow"></span>
       <span className="flex justify-center align-middle items-center">
