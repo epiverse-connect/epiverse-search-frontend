@@ -18,6 +18,14 @@ npm test # run unit tests
 npm run build # build the production version
 ```
 
+### Docker deployment
+
+We offer a Docker container image that stays up to date with the code in this repository. This makes it easier to deploy the page and keep it up to date. Specifically, you can run the Docker container using the following command:
+
+```sh
+docker run -p 3000:80 ghcr.io/epiverse-connect/epiverse-search-frontend:latest
+```
+
 ## Related
 
 The search is further detailed in the following repo's:
