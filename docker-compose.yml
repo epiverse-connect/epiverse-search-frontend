@@ -1,0 +1,9 @@
+services:
+  frontend:
+    image: ghcr.io/epiverse-connect/epiverse-search-frontend:latest
+    ports:
+      - '3000:80'
+    environment:
+      - NODE_ENV=production
+    restart: unless-stopped
+    container_name: epiverse-search-frontend
