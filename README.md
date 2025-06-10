@@ -26,6 +26,8 @@ We offer a Docker container image that stays up to date with the code in this re
 docker run -p 3000:80 ghcr.io/epiverse-connect/epiverse-search-frontend:latest
 ```
 
+Alternatively, you can use the supplied [`docker-compose.yml`](./docker-compose.yml) and run `docker compose up -d`.
+
 ## Related
 
 The search is further detailed in the following repo's:
