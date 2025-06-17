@@ -8,9 +8,9 @@ const SearchCol = () => {
   const [about, showAbout] = useState(false);
 
   const handleSearch = async () => {
-    if (process.env.REACT_APP_BACKEND) {
+    if (window._env_?.API_URL) {
       const response = await fetch(
-        `${process.env.REACT_APP_BACKEND}/?query=${encodeURIComponent(searchQuery)}`
+        `${window._env_?.API_URL}/?query=${encodeURIComponent(searchQuery)}`
       );
       const data = await response.json();
 
@@ -19,9 +19,7 @@ const SearchCol = () => {
         setFirst(false);
       }
     } else {
-      alert(
-        'No backend URL found. Please set REACT_APP_BACKEND in your .env file.'
-      );
+      alert('No backend URL found. Please set API_URL in your .env file.');
     }
   };
 
