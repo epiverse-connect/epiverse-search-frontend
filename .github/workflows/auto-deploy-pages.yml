@@ -20,8 +20,12 @@ jobs:
           node-version: '20'
 
       - name: Install dependencies, build website
+        env:
+          API_URL: ${{ secrets.API_URL }}
         run: |
           npm install
+          echo "API_URL=$API_URL" > .env
+          chmod +x ./env.sh && ./env.sh && cp env-config.js ./public/
           npm run build
 
       - name: Deploy
