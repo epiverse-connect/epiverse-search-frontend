@@ -4,11 +4,13 @@ import exampleSearchData from '../src/example-search.json';
 const SearchCol = () => {
   const [searchQuery, setSearchQuery] = useState('');
   const [results, setResults] = useState({});
+  const [loading, setLoading] = useState(false);
   const [first, setFirst] = useState(true);
   const [about, showAbout] = useState(false);
 
   const handleSearch = async () => {
     if (window._env_?.API_URL) {
+      setLoading(true);
       const response = await fetch(
         `${window._env_?.API_URL}/?query=${encodeURIComponent(searchQuery)}`
       );
@@ -17,6 +19,7 @@ const SearchCol = () => {
       if (!data.error) {
         setResults(data);
         setFirst(false);
+        setLoading(false);
       }
     } else {
       alert('No backend URL found. Please set API_URL in your .env file.');
@@ -114,21 +117,39 @@ const SearchCol = () => {
             className="button absolute h-[62px] end-0 bottom-0 bg-[#00205C] disabled:opacity-35"
             disabled={!searchQuery}
           >
-            <svg
-              className="w-8 h-8 text-white"
-              aria-hidden="true"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 20 20"
-            >
-              <path
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-                d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-              />
-            </svg>
+            {loading ? (
+              <svg
+                className="w-8 h-8 text-white animate-pulse"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            ) : (
+              <svg
+                className="w-8 h-8 text-white"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 20 20"
+              >
+                <path
+                  stroke="currentColor"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                  d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
+                />
+              </svg>
+            )}
           </button>
         </div>
         <SearchResults results={results} first={first} />
