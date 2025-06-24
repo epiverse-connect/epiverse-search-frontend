@@ -19,10 +19,6 @@ jobs:
         with:
           node-version: '20'
 
-      - name: Download latest map data
-        run: |
-          curl -L https://raw.githubusercontent.com/epiverse-connect/epiverse-map-backend/refs/heads/main/inst/extdata/map_data.json -o src/example-map.json
-
       - name: Install dependencies, build website
         run: |
           npm install
