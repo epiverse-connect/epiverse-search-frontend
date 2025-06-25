@@ -12,7 +12,7 @@ const SearchCol = () => {
     if (window._env_?.API_URL) {
       setLoading(true);
       const response = await fetch(
-        `${window._env_?.API_URL}/?query=${encodeURIComponent(searchQuery)}`
+        `${window._env_?.API_URL}?query=${encodeURIComponent(searchQuery)}`
       );
       const data = await response.json();
 
