@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/epitools/static/css/main.13ab17b8.css",
-    "main.js": "/epitools/static/js/main.8f645a2d.js",
-    "static/js/453.efb95269.chunk.js": "/epitools/static/js/453.efb95269.chunk.js",
-    "index.html": "/epitools/index.html",
-    "main.13ab17b8.css.map": "/epitools/static/css/main.13ab17b8.css.map",
-    "main.8f645a2d.js.map": "/epitools/static/js/main.8f645a2d.js.map",
-    "453.efb95269.chunk.js.map": "/epitools/static/js/453.efb95269.chunk.js.map"
+    "main.css": "./static/css/main.13ab17b8.css",
+    "main.js": "./static/js/main.9d615219.js",
+    "static/js/453.efb95269.chunk.js": "./static/js/453.efb95269.chunk.js",
+    "index.html": "./index.html",
+    "main.13ab17b8.css.map": "./static/css/main.13ab17b8.css.map",
+    "main.9d615219.js.map": "./static/js/main.9d615219.js.map",
+    "453.efb95269.chunk.js.map": "./static/js/453.efb95269.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.13ab17b8.css",
-    "static/js/main.8f645a2d.js"
+    "static/js/main.9d615219.js"
   ]
 }
