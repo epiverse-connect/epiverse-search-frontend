@@ -12,7 +12,7 @@ FROM nginx:1.15.2-alpine
 
 # Nginx config
 RUN rm -rf /etc/nginx/conf.d
-COPY conf /etc/nginx
+COPY conf/conf.d/ /etc/nginx/conf.d/
 
 # Static build
 COPY --from=builder /app/build /usr/share/nginx/html/
@@ -28,8 +28,8 @@ COPY .env .
 # Add bash
 RUN apk add --no-cache bash
 
-# Make our shell script executable
-RUN chmod +x env.sh
+# Normalize line endings and make the script executable
+RUN sed -i 's/\r$//' ./env.sh && chmod +x ./env.sh
 
 # Start Nginx server
 CMD ["/bin/bash", "-c", "/usr/share/nginx/html/env.sh && nginx -g \"daemon off;\""]
