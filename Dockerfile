@@ -15,7 +15,7 @@ RUN apk add --no-cache bash gettext
 
 # Nginx config
 RUN rm -rf /etc/nginx/conf.d
-COPY conf/conf.d/ /etc/nginx/conf.d/
+COPY conf/conf.d/default.conf /etc/nginx/templates/default.conf
 
 # Static build
 COPY --from=builder /app/build /usr/share/nginx/html/
@@ -32,4 +32,5 @@ COPY .env .
 RUN sed -i 's/\r$//' ./env.sh && chmod +x ./env.sh
 
 # Start Nginx server
-CMD ["/bin/bash", "-c", "envsubst '$PUBLIC_HOST' < /etc/nginx/templates/nginx.template.conf > /etc/nginx/conf.d/default.conf && /usr/share/nginx/html/env.sh && nginx -g 'daemon off;'"]
+CMD ["/bin/sh", "-c", "envsubst '$PUBLIC_HOST' < /etc/nginx/templates/default.conf > /etc/nginx/conf.d/default.conf && /usr/share/nginx/html/env.sh && nginx -g 'daemon off;'"]
+
