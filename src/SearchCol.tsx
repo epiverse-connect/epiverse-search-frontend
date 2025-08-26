@@ -54,14 +54,10 @@ const SearchCol = () => {
             </button>
             <h2 className="font-semibold text-lg">About this search</h2>
             <p className="">
-              Far far away, behind the word mountains, far from the countries
-              Vokalia and Consonantia, there live the blind texts. Separated
-              they live in Bookmarksgrove right at the coast of the Semantics, a
-              large language ocean. A small river named Duden flows by their
-              place and supplies it with the necessary regelialia. It is a
-              paradisematic country, in which roasted parts of sentences fly
-              into your mouth. Even the all-powerful Pointing has no control
-              about the blind texts it is an almost unorthographic life 
+              This AI-powered search bar is provided for testing purposes only.
+              It is not endorsed, production-ready, or guaranteed to provide
+              accurate or complete results. Please verify any information
+              independently before relying on it.
             </p>
           </div>
         )}

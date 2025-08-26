@@ -18,16 +18,28 @@ const Header = () => {
       </a>
       <span className="flex-grow"></span>
       <span className="flex justify-center align-middle items-center">
-        <a href="#" className="sm:hidden inline-block align-middle">
+        <a
+          href="https://www.who.int/initiatives/collaboratory"
+          className="sm:hidden inline-block align-middle"
+        >
           About
         </a>
-        <a href="#" className="hidden sm:inline-block align-middle">
+        <a
+          href="https://www.who.int/initiatives/collaboratory"
+          className="hidden sm:inline-block align-middle"
+        >
           About Collaboratory
         </a>
-        <a href="#" className="button hidden sm:inline ml-4">
+        <a
+          href="https://collaboratory.who.int/forum/"
+          className="button hidden sm:inline ml-4"
+        >
           Join Collaboratory
         </a>
-        <a href="#" className="sm:hidden button ml-4">
+        <a
+          href="https://collaboratory.who.int/forum/"
+          className="sm:hidden button ml-4"
+        >
           Join
         </a>
       </span>
