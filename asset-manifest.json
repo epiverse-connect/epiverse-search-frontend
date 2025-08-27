@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/epistack/static/css/main.13ab17b8.css",
-    "main.js": "/epistack/static/js/main.ca23107b.js",
+    "main.css": "/epistack/static/css/main.93dcd03a.css",
+    "main.js": "/epistack/static/js/main.5670259b.js",
     "static/js/453.efb95269.chunk.js": "/epistack/static/js/453.efb95269.chunk.js",
     "index.html": "/epistack/index.html",
-    "main.13ab17b8.css.map": "/epistack/static/css/main.13ab17b8.css.map",
-    "main.ca23107b.js.map": "/epistack/static/js/main.ca23107b.js.map",
+    "main.93dcd03a.css.map": "/epistack/static/css/main.93dcd03a.css.map",
+    "main.5670259b.js.map": "/epistack/static/js/main.5670259b.js.map",
     "453.efb95269.chunk.js.map": "/epistack/static/js/453.efb95269.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.13ab17b8.css",
-    "static/js/main.ca23107b.js"
+    "static/css/main.93dcd03a.css",
+    "static/js/main.5670259b.js"
   ]
 }
